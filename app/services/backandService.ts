@@ -3,8 +3,8 @@
  */
 
 import 'rxjs/Rx'
-import {Http, Headers, HTTP_BINDINGS} from 'angular2/http'
-import {Injectable} from 'angular2/core';
+import {Http, Headers, HTTP_BINDINGS} from '@angular/http'
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class BackandService {
@@ -53,7 +53,7 @@ export class BackandService {
            
     }
 
-    private extractErrorMessage(err) {
+    public extractErrorMessage(err) {
         return JSON.parse(err._body).error_description;
     }
 

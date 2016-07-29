@@ -1,9 +1,9 @@
-import {Page} from 'ionic-angular';
+import {Component} from '@angular/core';
 import 'rxjs/Rx'
-import {Http, Headers, HTTP_BINDINGS} from 'angular2/http'
+import {Http, Headers, HTTP_BINDINGS} from '@angular/http'
 import {BackandService} from '../../services/backandService'
 
-@Page({
+@Component({
   templateUrl: 'build/pages/page2/page2.html',
   providers: [BackandService]
 
@@ -13,6 +13,7 @@ export class Page2 {
   psearchQuery:string;
   items:string[] = [];
   fromServerData:string[] = [];
+  searchQuery: string;
 
   constructor(public backandService:BackandService) {
     this.searchQuery = '';

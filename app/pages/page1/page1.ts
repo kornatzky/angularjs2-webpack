@@ -1,11 +1,10 @@
-import {Page} from 'ionic-angular';
-import {Component} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
+import {Component} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 import 'rxjs/Rx'
-import {Http, Headers, HTTP_BINDINGS} from 'angular2/http'
+import {Http, Headers, HTTP_BINDINGS} from '@angular/http'
 import {BackandService} from '../../services/backandService'
 
-@Page({
+@Component({
     templateUrl: 'build/pages/page1/page1.html',
     providers: [BackandService]
 })
@@ -15,7 +14,9 @@ export class Page1 {
     username:string = 'test@angular2.com';
     password:string = 'angular2';
     auth_type:string = "N/A";
-    is_auth_error:string = "";
+    is_auth_error:boolean = false;
+    auth_status:string = null;
+
 
     constructor(public backandService:BackandService) {   
     }
@@ -31,7 +32,7 @@ export class Page1 {
                     
                 },
                 err => {
-                    var errorMessage = this.extractErrorMessage(err);
+                    var errorMessage = this.backandService.extractErrorMessage(err);
 
                     this.auth_status = `Error: ${errorMessage}`;
                     this.is_auth_error = true;
