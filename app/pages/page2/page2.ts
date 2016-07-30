@@ -28,7 +28,6 @@ export class Page2 {
 
     
       this.backandService.getQuote().subscribe((data) => {
-        console.log("here");
         this.items = data;
 
         // set q to the value of the searchbar
